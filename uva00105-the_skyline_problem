@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int high[10001]={0};
+    int rightest=0;
+    int l,h,r;
+    while(cin>>l>>h>>r)
+    {
+        if(r>rightest)
+            rightest=r;
+        for(int i=l;i<r;i++)
+        {
+            if(h>high[i])
+            {
+                high[i]=h;
+            }
+            
+        }
+    }
+    if(high[0]!=0)
+    {
+        cout<<"0 "<<high[0]<<" ";
+    }
+    for(int i=1;i<=rightest;i++)
+    {
+        if(high[i]!=high[i-1])
+        {
+            if(high[i]>high[i-1])
+                cout<<i<<" "<<high[i]<<" ";
+            else
+                cout<<i<<" "<<high[i]<<" ";
+        }
+        
+        
+    }
+    
+    
+    
+    return 0;
+}
