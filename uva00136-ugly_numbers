@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int store[1501]={0};
+    store[1]=1;
+    int n2=1,n3=1,n5=1;
+    for(int i=2;i<=1500;i++)
+    {
+        while(store[n2]*2<=store[i-1])n2++;
+        while(store[n3]*3<=store[i-1])n3++;
+        while(store[n5]*5<=store[i-1])n5++;
+        store[i]=std::min({store[n2]*2,store[n3]*3,store[n5]*5});
+    }
+    cout<<"The 1500'th ugly number is "<<store[1500]<<"."<<endl;
+    return 0;
+}
