@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n_train;
+    while(cin>>n_train && n_train != 0)
+    {
+        while(1)
+        {
+            int train[n_train], max = INT_MIN;
+            bool determine = false, impossible = false;
+            for(int i=0;i<n_train;i++)
+            {
+                cin>>train[i];
+                if(train[i] == 0)
+                {
+                    determine = true;
+                    break;
+                }
+                if(max < train[i]) max = train[i];
+                if(train[i] > train[i-1] && train[i] < max && i>0) impossible = true;
+            }
+            if(determine == true)
+                break;
+            if(impossible == false)
+                cout<<"Yes"<<endl;
+            else
+                cout<<"No"<<endl;
+        }
+    }
+    
+    
+    
+    
+    return 0;
+}
