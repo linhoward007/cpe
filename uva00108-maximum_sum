@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int n;
+    while(cin>>n)
+    {
+        int array[n][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                cin>>array[i][j];
+                if(i > 0) array[i][j] += array[i-1][j];
+                if(j > 0) array[i][j] += array[i][j-1];
+                if(i > 0 && j > 0) array[i][j] -= array[i-1][j-1];
+            }
+        }
+        int record = INT_MIN;
+        for(int ax=0;ax<n;ax++)
+        {
+            for(int ay=0;ay<n;ay++)
+            {
+                for(int bx=ax;bx<n;bx++)
+                {
+                    for(int by=ay;by<n;by++)
+                    {
+                        int temp = array[bx][by];
+                        if(ax > 0) temp -= array[ax-1][by];
+                        if(ay > 0) temp -= array[bx][ay-1];
+                        if(ax > 0 && ay >0) temp += array[ax-1][ay-1];
+                        record = max(record, temp);
+                    }
+                }
+            }
+        }
+        cout<<record<<endl;
+    }
+    return 0;
+}
